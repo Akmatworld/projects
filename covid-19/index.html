@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon"/>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <title>Corona Virus Traker</title>
+  </head>
+
+  <body>
+    <div id="app" class="container-fluid">
+      <div class="logo">
+        <img src="./img/icon.png" alt="This is logo">
+      </div>
+      <!-- cards -->
+        <div class='card-container'>
+            <main-card class='card-1 '
+              card-title='Infected'
+              :card-number='confirmed'
+              :card-date='lastUpdate'
+              card-text='Number of active cases of COVID-19.'></main-card>
+            <main-card class='card-2'
+              card-title='Recovered'
+              :card-number='recovered'
+              :card-date='lastUpdate'
+              card-text='Number of recoveries from COVID-19.'></main-card>
+            <main-card class='card-3'
+              card-title='Deaths'
+              :card-number='deaths'
+              :card-date='lastUpdate'
+              card-text='Number of deaths caused by COVID-19.'></main-card>
+        </div>
+
+      
+      <!-- countries -->
+        <div class="countries-container">
+          <select v-model='selectedCountry'>
+            <option value="global">Global</option>
+            <option v-for="country in countries" 
+            :value='country.name'
+            :key='country.name'
+            >{{ country.name }}</option>
+          </select>
+        </div>
+  
+      <!-- chart -->
+      <div class="chart-container">
+        <bar-chart v-if='country' :country='country' :chart-data='chartData'></bar-chart>
+        <line-chart v-else-if='chartData' :chart-data='chartData'></line-chart>
+      </div>
+    </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+  Vue.component('line-chart', {
+    extends: VueChartJs.Line,
+    props: ['chartData'],
+    mounted() {
+      this.renderChart({
+        labels: this.chartData.map((data)=> data.date),
+        datasets: [
+          {
+            label: 'Infected',
+            borderColor: '#3333ff',
+            data: this.chartData.map((data)=>data.confirmed),
+            fill: true
+          },
+          {
+            label: 'Deaths',
+            borderColor: '#f87979',
+            backgroundColor: 'rgba(255, 0, 0, 0.5)',
+            data: this.chartData.map((data)=>data.deaths),
+            fill: true
+          }
+        ]
+      }, {responsive: true, maintainAspectRatio: false})
+    }
+  });
+  Vue.component('bar-chart', {
+    extends: VueChartJs.Bar,
+    props: ['chartData','country'],
+    mounted() {
+      this.renderChart({
+        labels: ['Infected', 'Recovered', 'Deaths'],
+        datasets: [
+          {
+            label: 'People',
+            backgroundColor: ['rgba(0, 0, 255, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)'],
+            data: this.chartData
+          }
+        ]
+      }, {legend: { display: false },
+          title: { display: true, text: `Current state in ${this.country}` },
+          responsive: true, maintainAspectRatio: false
+        })
+    }
+  });
+  Vue.component('main-card', {
+    props: ['cardTitle', 'cardNumber','cardDate', 'cardText'],
+    template: `
+    <div class='card'>
+      <p class='title'>{{ cardTitle }}</p>
+      <p class='number'>{{ cardNumber.toLocaleString() }}</p>
+      <p class='date'>{{ cardDate }}</p>
+      <p class='text'>{{ cardText }}</p>
+    </div>`
+  });
+  
+
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      url: 'https://covid19.mathdro.id/api/',
+      confirmed: '',
+      recovered: '',
+      deaths: '',
+      lastUpdate: '',
+      countries: '',
+      chartData: '',
+      selectedCountry: 'global',
+      country: ''
+    },
+    created() {
+      this.getGlobalData(this.url);
+      this.getCountries(this.url);
+      this.getChartData(this.url);
+    },
+    methods: {
+      getGlobalData(url, country) {
+        if (country) url += `countries/${country}`;
+        axios.get(url)
+          .then((response) => {
+            this.confirmed = response.data.confirmed.value;
+            this.recovered = response.data.recovered.value;
+            this.deaths = response.data.deaths.value;
+            this.lastUpdate = new Date(response.data.lastUpdate).toDateString();
+            
+            if (country) {
+              this.chartData = [
+                this.confirmed,
+                this.recovered,
+                this.deaths
+              ];
+              this.country = this.selectedCountry;
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      },
+      getCountries(url) {
+        url += 'countries';
+        axios.get(url)
+          .then((response) => {
+          this.countries = response.data.countries;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      },
+      getChartData(url) {
+        // chart request
+        axios.get(url+'daily')
+          .then((response) => {
+          this.chartData = response.data.map(({ confirmed, deaths, reportDate: date }) => ({ confirmed: confirmed.total, deaths: deaths.total, date }));
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          });
+      }
+    },
+    watch: {
+      selectedCountry(val, oldVal) {
+        this.country = '';
+        this.chartData = '';
+        
+        if (this.selectedCountry === 'global') {
+          this.getGlobalData(this.url);
+          this.getCountries(this.url);
+          this.getChartData(this.url);
+        } else {
+          this.getGlobalData(this.url, val);
+        }
+      }
+    }
+  })
+  </script>
+  </body>
+</html>

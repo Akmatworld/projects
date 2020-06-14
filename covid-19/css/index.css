@@ -1,0 +1,73 @@
+.card {
+	width: 240px;
+	background-color: white;
+    box-shadow: 0 0 2px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block;
+    min-width: 230px;
+    margin-right: 10px;
+}
+.number {
+	font-size: 20px;
+}
+.date {
+	font-size: 15px;
+}
+.title, .date {
+	color: #ccc;
+}
+.title, .number, .date, .text {
+	margin: 10px 0 0 19px;
+}
+.logo {
+	display: flex;
+	justify-content: center;
+	margin: 20px auto;
+}
+.card-1 {
+	border-bottom: 8px solid #a6aaf8;
+}
+.card-2 {
+	border-bottom: 8px solid #8fe58a;
+}
+.card-3 {
+	border-bottom: 8px solid #ff8b87;
+}
+.md-field {
+	width: 240px !important;
+}
+.countries-container {
+	display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.chart-container div {
+	width: 80%;
+}
+.chart-container canvas {
+	width: 40%;
+	height: 40%;
+}
+.card-container {
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
+}
+
+/* on screens that are 993 or large */
+@media screen and (max-width: 769px) {
+  .card-container {
+    display: flex;
+    justify-content: center;
+  }
+  .logo img {
+  	width: 80%;
+  }
+}
