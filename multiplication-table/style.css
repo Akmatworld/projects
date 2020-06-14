@@ -1,0 +1,294 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+html, body {
+  margin: 0;
+  height: 100%;
+  background-color: #585454;
+  color: #fff;
+  font-family: Roboto, Verdana, Arial;
+  font-weight: bold;
+}
+
+#app {
+	margin: 0 auto;
+	max-width: 1200px;
+	position: relative;
+  height: 100%;
+  /*display: flex;
+  flex-flow: column;*/
+  /*background-color: #778;*/
+  overflow: hidden;
+}
+/* user name */
+.user-name {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+/* menu for adaptive */
+#click-menu {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.one-line,
+.two-line,
+.three-line {
+  background-color: white;
+  width: 30px;
+  height: 4px;
+  margin-bottom: 4px;
+}
+.one-line {
+}
+
+/* user statistic */
+.user-statistic {
+  display: flex;
+  font-size: 1.5em;
+}
+.user-errors {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.user-ball {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+.wrapper {
+  margin: 0 auto;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*flex: 1;*/
+}
+.answers {
+	width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  /*align-self: flex-end;*/
+}
+.container {
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  transform: rotate(45deg) scale(0.7);
+}
+.button {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #C4C4C4;
+  color: #624040;
+  width: 40%;
+  height: 40%;
+  transform: rotate(-45deg);
+  font-size: 10vw;
+}
+.forAll {
+  display: flex;
+  justify-content: center;
+}
+.correct {
+	color: #fff;
+	background-color: #3A8538;
+}
+
+.error {
+	color: white;
+	border-color: red;
+	background-color: red;
+}
+.main {
+	padding: 20px 0 20px 0;
+	display: flex;
+	justify-content: center;
+	font-size: 8vw;
+}
+.leftOperand,
+.rightOperand,
+.multiplicationOperator,
+.equallyOperator,
+.result {
+	width: 15%;
+}
+.input-numbers {
+	position: absolute;
+	font-size: 2em;
+	right: 10px;
+	top: 10px;
+  z-index: 1;
+}
+
+/* ----------- iPhone 4 and 4S ----------- */
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .input-numbers {
+      top: 40px;
+      font-size: 1.4em;
+      display: none;
+    }
+    #click-menu {
+      display: block;
+    }
+    .main {
+      font-size: 3em;
+      margin-top: 30px;
+    }
+    .user-statistic {
+      font-size: 1em;
+    }
+    .button {
+      font-size: 4em;
+    }
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .user-statistic {
+      font-size: 1em;
+    }
+    .input-numbers {
+      font-size: 1em;
+      top: 40px;
+    }
+    #click-menu {
+      display: block;
+    }
+    .main {
+      font-size: 3em;
+      padding-bottom: 10px;
+    }
+    .container {
+      transform: none;
+      position: relative;
+      margin-top: 105px;
+    }
+    .button {
+      transform: none;
+      font-size: 2.4em;
+      width: 74px;
+      height: 70px;
+    }
+}
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .wrapper {
+      height: 100%;
+      align-items: flex-end;
+    }
+    .answers {
+      margin-bottom: 43%;
+    }
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .user-statistic {
+      font-size: 1em;
+    }
+    .main {
+      font-size: 3em;
+      padding-bottom: 10px;
+    }
+    .input-numbers {
+      font-size: 1em;
+      top: 40px;
+    }
+    #click-menu {
+      display: block;
+    }
+    .container {
+      transform: none;
+      position: relative;
+      margin-top: 105px;
+    }
+    .button {
+      transform: none;
+      font-size: 2.4em;
+      width: 74px;
+      height: 70px;
+    }
+}
+
+/* ----------- Xiomi Note 5 ----------- */
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 393px) 
+  and (max-device-width: 706px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .wrapper {
+      height: 100%;
+      align-items: flex-end;
+    }
+    .answers {
+      margin-bottom: 43%;
+    }
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 393px) 
+  and (max-device-width: 706px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .user-statistic {
+      font-size: 1em;
+    }
+    .main {
+      font-size: 3em;
+      padding-bottom: 10px;
+    }
+    .input-numbers {
+      font-size: 1em;
+      top: 40px;
+    }
+    #click-menu {
+      display: block;
+    }
+    .container {
+      transform: none;
+      position: relative;
+      margin-top: 105px;
+    }
+    .button {
+      transform: none;
+      font-size: 2.4em;
+      width: 74px;
+      height: 70px;
+    }
+}

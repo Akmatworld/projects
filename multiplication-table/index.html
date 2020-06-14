@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Таблица умножения</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="app">
+		<div class="main">
+			<div class="forAll leftOperand">
+				<span>{{ leftOperand }}</span>
+			</div>
+			<div class="forAll multiplicationOperator">
+				<span>*</span>
+			</div>
+			<div class="forAll rightOperand">
+				<span>{{ rightOperand }}</span>
+			</div>
+			<div class="forAll equallyOperator">
+				<span>=</span>
+			</div>
+			<div class="forAll result">
+				<span class="result__span">{{ isHideResult ? '?' : result }}</span>
+			</div>
+		</div>
+		<!-- user name -->
+		<div class="user-name">Tonni</div>
+		<!-- menu for adaptive -->
+		<div id="click-menu">
+			<div class="one-line"></div>
+			<div class="two-line"></div>
+			<div class="three-line"></div>
+		</div>
+		<!-- user statistic -->
+		<div class="user-statistic">
+			<div class="user-errors">Errors: 4</div>
+			<div class="user-ball">Ball: 1000</div>
+		</div>
+		<!-- chechbox -->
+		<input-number
+			:variants="[1, 2, 3, 4, 5, 6, 7, 8]"
+			v-model="leftOperandVariants">
+		</input-number>
+		
+		<div class="wrapper">
+			<div class="answers">
+				<div class="container">
+					<div class="button" v-for="btn in buttons" :class="{correct: btn.isCorrect === true, error: 	btn.isCorrect === false}" v-bind:data-keyCode="btn.keyCode" v-bind:id="btn.idName">
+					{{ btn.value }} 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="index.js"></script>
+</body>
+</html>
