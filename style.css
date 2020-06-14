@@ -1,0 +1,43 @@
+body {
+	box-sizing: border-box;
+}
+.my-project-title {
+	padding: 0;
+	text-align: center;
+}
+.container {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+.common {
+	height: 100px;
+	width: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 34px;
+	margin: 0 10px;
+}
+.common a {
+	text-decoration: none;
+	color: #000;
+}
+.covid19 a:hover {
+	color: #72d3d8;
+}
+.covid19 {
+	border-bottom: 5px solid #72d3d8;
+}
+.mt a:hover {
+	color: #62ce76;
+}
+.mt {
+	border-bottom: 5px solid #62ce76;
+}
+.api a:hover {
+	color: #a07fcc;
+}
+.api {
+	border-bottom: 5px solid #a07fcc;
+}
