@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+}
+header {
+  background-color: #474779;
+  height: 100vh;
+}
+nav {
+  width: 500px;
+  margin: 0 auto;
+  padding: 50px 0 0;
+}
+.first-ul, .second-inner-ul-html, .second-inner-ul-css {
+  list-style: none;
+}
+.first-ul {
+  margin: 0;
+  padding: 0 10px;
+  background-color: #799;
+  box-shadow: 0 4px 10px rgba(0,0,255, .2);
+}
+.first-ul > li {
+  display: inline-block;
+  padding: 15px 10px;
+  transition: background .5s;
+}
+.first-ul > li:hover {
+  background-color: #474779;
+  cursor: pointer;
+}
+.first-link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+.html {
+  position: relative;
+}
+.html:hover .second-inner-ul-html {
+  height: 117px;
+}
+.second-inner-ul-html {
+  position: absolute;
+  background-color: #799;
+  padding: 0;
+  top: 48px;
+  height: 0px;
+  transition: height .4s;
+  overflow: hidden;
+  left: 0;
+}
+.second-inner-ul-html > li {
+  padding: 5px 10px;
+  border-bottom: 1px dashed #ccc;
+  box-shadow: 0 4px 10px rgba(0,0,255, .2);
+  color: #fff;
+  transition: background 1s;
+}
+.second-inner-ul-html > li:hover {
+  background-color: #474779;
+  cursor: pointer;
+}
+
+.css {
+  position: relative;
+}
+.second-inner-ul-css {
+  position: absolute;
+  background-color: #799;
+  padding: 0;
+  top: 48px;
+  left: 0;
+  opacity: 0;
+  height: 0;
+  transition: opacity 1s;
+  overflow: hidden;
+}
+.second-inner-ul-css > li {
+  padding: 5px 10px;
+  border-bottom: 1px dashed #ccc;
+  box-shadow: 0 4px 10px rgba(0,0,255, .2);
+  color: #fff;
+  width: 100px;
+  transition: background 1s;
+}
+.css:hover .second-inner-ul-css {
+  opacity: 1;
+  height: 117px;
+}
+.second-inner-ul-css > li:hover {
+  background-color: #474779;
+  cursor: pointer;
+}
