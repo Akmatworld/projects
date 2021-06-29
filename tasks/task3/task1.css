@@ -1,0 +1,27 @@
+.p1::first-letter {
+  color: red;
+  font-size: 40px;
+  font-weight: bold;
+  text-shadow: 0 2px 5px black;
+}
+.p2::first-line {
+  font-weight: bold;
+  color: darkblue;
+  font-size: 20px;
+}
+p:hover {
+  background-color: #ccc;
+  border-radius:  5px;
+}
+p {
+  color: darkblue;
+  margin: 0 auto;
+  padding: 10px;
+}
+.p-wrapper p:nth-child(even) {
+  color:  red !important;
+}
+h2 {
+  text-align: center;
+  color:  #789;
+}
