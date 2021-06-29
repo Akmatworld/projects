@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Robot, Tahoma, Arial;
+}
+html, body {
+  height: 100%;
+}
+.container {
+  max-width: 940px;
+  min-height: 100%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  background-image: url(https://i.stack.imgur.com/p9mUO.jpg);
+  position: relative;
+}
+.navigation, .content {
+  display: inline-block;
+}
+.navigation {
+  background-color: #788;
+  width: 20%;
+  overflow: hidden;
+}
+ul {
+  list-style: none;
+}
+li {
+  border-bottom: 1px solid black;
+}
+li a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  transition: padding .5s, background-color .5s;
+  text-transform: uppercase;
+}
+li a:hover {
+  padding-left: 30px;
+  background-color: black;
+}
+
+.content {
+  width: 79%;
+  vertical-align: top;
+  color: #fff
+}
+.sign-in-headline {
+  text-align: center;
+  margin: 10px 0;
+}
+form {
+  width: 200px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px black;
+  padding: 10px;
+}
+input {
+  width: 100%;
+  padding: 7px 10px;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid black;
+  background-color: #ccc;
+}
+label {
+  font-size: 14px;
+  display: block;
+  margin: 10px 0;
+}
+.sign-in-btn {
+  width: 100%;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  padding: 7px 10px;
+  margin-top: 10px;
+  background-color: #789;
+  color: #fff;
+  box-shadow: 0 2px 5px black;
+  transition: all .5s;
+}
+.sign-in-btn:hover {
+  background-color: black;
+  cursor: pointer;
+}
+.sign-up-link {
+  font-size: 14px;
+  display: block;
+  text-align: center;
+  margin-top:  20px;
+}
+.sign-up-link a {
+  color: #fff;
+  text-decoration: none;
+}
+.sign-up-link a:hover {
+  color: black;
+}
+.vertical-line {
+  border-bottom: 1px solid #ccc;
+  margin: 20px 0;
+}
+.article-headline {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.dog-img {
+  width: 250px;
+  height: auto;
+  float: left;
+  margin: 0 10px 5px 0;
+}
+.dog-img:hover {
+  cursor: pointer;
+}
+p {
+  margin-bottom: 10px;
+  line-height: 1.7em;
+}
+.about-us {
+  position: absolute;
+  bottom: 30px;
+  width: 300px;
+  padding: 10px;
+  visibility: hidden;
+  transition: visibility .5s, opacity .7s;
+  opacity: 0;
+}
+.about-us-show-btn {
+  background-color: #888;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 50%;
+  position: absolute;
+  display: inline-block;
+  bottom: 5px;
+  left: 5px;
+  color: #fff;
+}
+.content-about-us {
+  background-color: #ccc;
+  border-radius: 10px;
+  padding: 10px;
+}
+.content-about-us h3 {
+  text-align: center;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.content-about-us p {
+  font-size: 12px;
+}
+.about-us-show-btn:hover {
+  cursor: pointer;
+}
+.about-us-show-btn:hover ~ .about-us {
+  visibility: visible;
+  opacity: 1;
+}
