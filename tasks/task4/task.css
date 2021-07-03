@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
+p::selection {
+	color: white;
+	background-color: #000;
+}
+p::after {
+	content: "안녕하세요";
+	display: inline-block;
+	text-indent: 0;
+}
+form input {
+	width: 80%;
+	margin-bottom: 40px;
+	padding:  10px 20px;
+	outline:  none;
+	border-radius: 20px;
+	border:  1px solid blue;
+	font-size:  17px;
+}
+input::placeholder {
+	font-size: 17px;
+	color: rgba(0,0,255, .5);
+	text-align: center;
+}
+input:focus {
+	background-color: rgba(0,0,255, .3);
+	color: white;
+}
+input::selection {
+	color: white;
+	background-color: #000;
+}
+button {
+	padding:  10px 20px;
+	border-radius: 20px;
+	border: 1px solid blue;
+	font-size: 17px;
+}
+button:hover {
+	color: white;
+	background-color: rgba(0,0,255, .3); 
+	border: none;
+	cursor: pointer;
+}
+form, p {
+	max-width: 800px;
+	min-width: 360px;
+	margin: 0 auto;
+}
+p {
+	font-family: 'Lobster', cursive;
+	font-size: 20px;
+	text-indent: 40px;
+	padding:  10px 20px;
+	background-color: rgba(0,0,255, .2);
+}
