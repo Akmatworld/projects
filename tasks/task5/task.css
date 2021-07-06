@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.container {
+	width: 100%;
+	min-height: 400px;
+	background-color: #778;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.item {
+	background-color: #eee;
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+}
+.item4 {
+	align-self: flex-end;
+	background-color: #e5e;
+}
+.item7 {
+	align-self: flex-start;
+	background-color: green;
+	color: #fff;
+}
