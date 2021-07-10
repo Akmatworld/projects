@@ -12,15 +12,12 @@ html, body {
 	max-width: 1200px;
 	margin: 0 auto;
 	display: flex;
-	flex-direction: column;
 	min-height: 100%;
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 }
 .content {
 	display: flex;
-	flex-grow: 1;
-	flex-shrink: 1;
 }
 .header {
 	flex-grow: 0;
@@ -75,6 +72,7 @@ li a:hover {
 	flex-wrap: wrap;
 	gap: 5px;
 	padding: 10px;
+	align-content: flex-start;
 }
 .item {
 	background-color: #fff;
